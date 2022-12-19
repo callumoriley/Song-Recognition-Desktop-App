@@ -11,7 +11,7 @@ A simple desktop app to recognize what song is playing on your computer by liste
 
 ## Acknowledgements
 
-###I pulled code from a couple sources to make this work quickly. Here they are:
+### I pulled code from a couple sources to make this work quickly. Here they are:
 Turning a numpy array into an MP3 file:
 https://stackoverflow.com/questions/66191480/how-to-convert-a-numpy-array-to-a-mp3-file
 (originally from https://stackoverflow.com/questions/53633177/how-to-read-a-mp3-audio-file-into-a-numpy-array-save-a-numpy-array-to-mp3)
