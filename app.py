@@ -1,6 +1,8 @@
 import tkinter as tk
 from recognize_audio import get_song_name_artist
 
+SAVE_FILE_NAME = __file__[:__file__.rfind("\\")]+"\\savedsongs.txt"
+
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -18,6 +20,21 @@ class App(tk.Tk):
         self.output_field = tk.Label(self, text="No song recognized")
         self.output_field.pack()
 
+        self.save_button = tk.Button(self, text="Save recognized song", command=self.saveSong)
+        self.save_button.pack()
+
     def getSong(self):
-        song_name = get_song_name_artist(int(self.duration_entry.get()))
-        self.output_field.config(text=song_name)
+        try:
+            self.song_name = get_song_name_artist(int(self.duration_entry.get()))
+            self.output_field.config(text=self.song_name)
+        except KeyError:
+            print("Song not recognized")
+            self.output_field.config(text="No song recognized")
+
+    def saveSong(self):
+        with open(SAVE_FILE_NAME, "a") as f:
+            try:
+                f.write(self.song_name+"\n")
+                print("Song written to file")
+            except AttributeError:
+                print("Capture a song first")
